@@ -8,6 +8,8 @@
 ![type](https://img.shields.io/badge/type-Agent%20Skill-6f42c1)
 ![lang](https://img.shields.io/badge/lang-中文-red)
 
+**简体中文** · [English](README.en.md)
+
 ---
 
 ## 这是什么
