@@ -131,6 +131,8 @@
 - 收录方式是**把技能整份拷进** `plugins/all-skills/skills/mcm-o-guide/`，同时在该插件的 `plugin.json` 里加关键词、把描述里的技能数 +1
 - 本次拷了 `SKILL.md` + `SKILL.en.md` + `GUIDE.en.md` + `references/` + `scripts/` + `templates/` + `playbooks/`，共 37 个文件 339 KB，**不带 `docs/` 站点**
 - 注意：这个仓库每天合并好几个 PR，提交后 base 会过期导致 `mergeable_state=dirty`，需要 `git fetch upstream && git rebase upstream/main` 再 force push（`plugin.json` 的 keywords 尾部和技能数会冲突，两边都要保留）
+- **2026-10-28 当日观察**：维护者 07:20 连合 #568（mbse-requirements）与 #563（hey-research，同为 research 类），#583 是「按意见改完重开为 #595」而非拒绝。说明**格式合规的 PR 基本会合**，被关的多半是要改稿
+- #591 现状：`open` / `unstable`（CI 等首次贡献者批准，非失败）/ 0 条评论 / 与上游无冲突。等维护者审，不需要再操作
 
 **keyuyuan/skillhub-awesome-skills**（73 star，由 skillhub.club 维护）—— 已投，Issue [#19](https://github.com/keyuyuan/skillhub-awesome-skills/issues/19)（2026-10-28）
 
@@ -179,12 +181,21 @@ Happy to adjust the category or wording.
 | 站点 | 提交方式 | 助手能否代做 |
 |---|---|---|
 | skills.sh（Vercel Labs，27k+ 技能，`npx skills find` 的索引） | 无提交入口；靠 `npx skills add` 的安装遥测 + GitHub 数据自动收录 | 已实测安装成功，剩下要真实安装量 |
-| skillhub.club（154.5k 技能） | Publish 需登录 + API key | 否 |
+| skillhub.club（154.5k 技能） | 站内上传：登录 → `/app/skills` → 建技能 → 传 ZIP | **已放弃**，见下方限制 |
 | skillhub.cn | 需实名认证 / 刷脸 | 否 |
 | claudeskillsgithub.com | 提交入口未开放 | 否 |
 | SkillsMP | https://skillsmp.com → Submit a skill（需 GitHub 登录） | 否 |
 | awesomeclaude.ai | 站点底部 Submit 表单 | 否 |
 | wind8ai/skills-top-stars | 直接开 Issue 自荐（中文列表） | 可，但需先看是否仍活跃 |
+
+**skillhub.club 实测结论（2026-10-28，放弃）**：上传器有四个硬坑，且都不是内容问题。
+
+1. **ZIP 路径必须是正斜杠**。Windows 自带压缩写出 `playbooks\x.md`，直接报 `Invalid filepath: playbooks\coding-playbook.md`
+2. **frontmatter 必须 LF 换行**。CRLF 会让它把首行读成 `"---\r"`，误报「必须填写 frontmatter.name」
+3. **解压后总体积必须 < 100 KB**（不是压缩包体积）。完整技能 367 KB，砍到核心 9 个文件才 89 KB
+4. 建技能和传包是两个动作，失败要重来一遍
+
+结论：这个站适合**单文件小技能**，不适合带 references 目录的技能包。要做就得先把内容裁到 90 KB 以内，代价是砍掉脚本和案例。**同等精力放到 GitHub 侧的列表 PR 更划算**，所以这条线停掉，别再试。
 
 ### 4.5 免登录安装通道：`npx skills`（2026-10-28 实测通过）
 
