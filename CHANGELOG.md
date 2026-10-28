@@ -5,6 +5,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); version
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-28
+
+### Added
+- `docs/en/` — 英文版工具站（与中文站共用同一套判定逻辑）
+- `docs/cheatsheet.html` — A4 一页纸清单：摘要骨架、基准线、25 页预算、灵敏度做法、提交前 1 小时检查
+- `docs/launch-kit.md` — 渠道优先级、时间表、现成文案（知乎 / 小红书 / B 站 / X / awesome-list PR）
+- 「复制体检报告」按钮：导出分数 + 七项结论 + 建议，可直接发给队友（不含摘要原文）
+- `robots.txt`、`sitemap.xml`、canonical / hreflang / JSON-LD / Twitter Card
+
+### Changed
+- 摘要判定逻辑抽到 `docs/checker.js`，中英文站共用，避免两套口径漂移
+- 样式抽到 `docs/style.css`，三个页面共用
+- 长度判定区间与页面标注统一为 330–540 词（原本一处写 350–520，一处判 330–540）
+
 ## [1.1.0] - 2026-10-28
 
 ### Added

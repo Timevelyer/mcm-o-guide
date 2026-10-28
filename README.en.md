@@ -12,7 +12,10 @@
 > The initial screen takes under five minutes. Judges look for three things: **a quantitative conclusion for every task, the method chain, and the name of your model.**
 > This guide turns 502 award-winning papers (2004–2024) and three official judges' commentaries into something you can actually write from.
 
-**[→ Try the online summary checker](https://timevelyer.github.io/mcm-o-guide/)** — paste a summary, get a report in ten seconds. Nothing to install.
+**Online tools (nothing to install)**
+
+- **[Summary checker](https://timevelyer.github.io/mcm-o-guide/en/)** — paste a summary, get a report in ten seconds · [中文](https://timevelyer.github.io/mcm-o-guide/)
+- **[One-page cheat sheet](https://timevelyer.github.io/mcm-o-guide/cheatsheet.html)** — summary skeleton, page budget, pre-submission checks; print it on A4 (Chinese)
 
 ---
 

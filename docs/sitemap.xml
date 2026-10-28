@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://timevelyer.github.io/mcm-o-guide/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://timevelyer.github.io/mcm-o-guide/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timevelyer.github.io/mcm-o-guide/en/"/>
+  </url>
+  <url>
+    <loc>https://timevelyer.github.io/mcm-o-guide/en/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://timevelyer.github.io/mcm-o-guide/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timevelyer.github.io/mcm-o-guide/en/"/>
+  </url>
+  <url>
+    <loc>https://timevelyer.github.io/mcm-o-guide/cheatsheet.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

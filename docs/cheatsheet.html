@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一页纸清单 · MCM/ICM 提交前速查</title>
+<meta name="description" content="MCM/ICM 一页纸速查：摘要 10 句骨架、数字基准线、25 页预算、灵敏度四种做法、提交前 1 小时硬性检查。可打印成 A4 贴在桌上。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://timevelyer.github.io/mcm-o-guide/cheatsheet.html">
+<link rel="alternate" hreflang="zh-CN" href="https://timevelyer.github.io/mcm-o-guide/cheatsheet.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="mcm-o-guide">
+<meta property="og:url" content="https://timevelyer.github.io/mcm-o-guide/cheatsheet.html">
+<meta property="og:title" content="MCM/ICM 一页纸清单 · 提交前速查">
+<meta property="og:description" content="摘要 10 句骨架 + 基准线 + 25 页预算 + 灵敏度做法 + 提交前检查，一张 A4 打完。">
+<meta property="og:image" content="https://timevelyer.github.io/mcm-o-guide/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∑</text></svg>">
+<link rel="stylesheet" href="style.css">
+<style>
+  .sheet{max-width:1080px;margin:0 auto;padding:40px 24px 64px}
+  .sheet-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px}
+  .sheet-head h1{font-size:clamp(24px,3.4vw,34px);margin:0 0 6px}
+  .sheet-head p{margin:0;color:var(--ink-2);font-size:14px}
+  .sheet-head .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);text-align:right;white-space:nowrap}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .block{background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:16px 18px}
+  .block.wide{grid-column:1 / -1}
+  .block h2{font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;font-weight:700}
+  .block h2 span{color:var(--ink-3);letter-spacing:0;text-transform:none;font-weight:400;margin-left:6px}
+  .block p{margin:0 0 8px;font-size:13.5px;line-height:1.62;color:var(--ink-2)}
+  .block p:last-child{margin-bottom:0}
+  pre.tpl{margin:0;background:transparent;border:0;padding:0;font-family:var(--mono);font-size:11.6px;line-height:1.72;color:var(--ink);white-space:pre-wrap}
+  pre.tpl b{color:var(--accent);font-weight:600}
+  table.t{width:100%;border-collapse:collapse;font-size:12.8px}
+  table.t th,table.t td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.t th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+  table.t td.n{font-family:var(--mono);white-space:nowrap;color:var(--ink-2)}
+  table.t tr:last-child td{border-bottom:0}
+  ol.tight,ul.tight{margin:0;padding-left:18px;font-size:13px;line-height:1.72;color:var(--ink-2)}
+  ol.tight li,ul.tight li{margin-bottom:3px}
+  .check li::marker{color:var(--accent)}
+  .foot{margin-top:22px;font-size:12.5px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .foot a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+  .foot a:hover{color:var(--accent);border-color:var(--accent)}
+  .no-print{display:inline-flex;gap:8px;align-items:center}
+  @media print{
+    :root{--paper:#fff;--paper-2:#fff}
+    body{background:#fff;font-size:11.5px}
+    header.top,.foot .no-print{display:none}
+    .sheet{padding:0;max-width:none}
+    .block{break-inside:avoid;border-color:#bbb;padding:10px 12px}
+    .cols{gap:10px}
+    pre.tpl{font-size:9.4px;line-height:1.55}
+    table.t{font-size:9.6px}
+    table.t th,table.t td{padding:3px 5px}
+    ol.tight,ul.tight{font-size:9.8px;line-height:1.55}
+    .block h2{font-size:10px}
+    .sheet-head h1{font-size:22px}
+    .sheet-head{margin-bottom:12px;padding-bottom:10px}
+    a{color:#000;text-decoration:none}
+  }
+  @page{size:A4;margin:11mm}
+  @media (max-width:760px){ .cols{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand"><b>mcm-o-guide</b> · 一页纸清单</div>
+    <nav>
+      <a href="./">自检器</a>
+      <a href="https://github.com/Timevelyer/mcm-o-guide">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<div class="sheet">
+  <div class="sheet-head">
+    <div>
+      <h1>MCM/ICM 提交前速查</h1>
+      <p>全部数字来自 502 篇获奖论文（2004–2024）与 3 篇官方评委点评的统计口径。</p>
+    </div>
+    <div class="meta">A4 · one page<br>2027 美赛：1/28 – 2/1</div>
+  </div>
+
+  <div class="cols">
+
+    <section class="block wide">
+      <h2>01 摘要骨架 <span>10 句，每个 Task 至少 1 个数字</span></h2>
+      <pre class="tpl"><b>[背景 1 句]</b> As [现象/趋势] [变化方向], [研究对象] faces [具体挑战].
+<b>[目标 1 句]</b> To explore/evaluate/predict [核心问题], we develop <b>[模型名]</b> model.
+
+<b>[数据 1–2 句]</b> Before modeling, we [数据预处理动作：classified N species into M categories / estimated parameters from X sources].
+
+<b>[Task 1]</b> For Task 1, we established [模型名] based on [基础理论], incorporating [关键创新点]. The results show that [量化结论，含数字].
+<b>[Task 2]</b> For Task 2, we calculated [指标1], [指标2] and [指标3] to evaluate [维度1–3]. Results indicate that [趋势/数值结论].
+<b>[Task 3]</b> For Task 3, we compared [N] scenarios and found that [具体结论，含数字].
+<b>[Task 4/N]</b> We varied [参数] from [A] to [B]; the results show [具体趋势/数值].
+
+<b>[灵敏度 1 句]</b> Sensitivity analysis on [参数名] confirms the model is [stable/robust].
+<b>[收尾 1 句]</b> We also discuss [优势] and acknowledge [主要局限], concluding that [总体结论/建议].
+
+<b>Keywords:</b> [模型名], [核心概念1], [核心概念2], [核心概念3]</pre>
+    </section>
+
+    <section class="block">
+      <h2>02 摘要基准线 <span>中位数 / O 奖推荐</span></h2>
+      <table class="t">
+        <tr><th>指标</th><th>中位数</th><th>O 奖推荐</th></tr>
+        <tr><td>总词数</td><td class="n">437</td><td class="n">400–500</td></tr>
+        <tr><td>具体数字个数</td><td class="n">20–30</td><td class="n">20–35</td></tr>
+        <tr><td>含数字的句子</td><td class="n">6–8</td><td class="n">≥ 8</td></tr>
+        <tr><td>模型名出现</td><td class="n">2–4 次</td><td class="n">≥ 3 次</td></tr>
+        <tr><td>关键词</td><td class="n">4–5</td><td class="n">4–5，含模型名</td></tr>
+        <tr><td>Task 覆盖</td><td class="n">100%</td><td class="n">100% + 各 ≥ 1 数字</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>03 25 页预算 <span>以 2023 A（GIID）为参照</span></h2>
+      <table class="t">
+        <tr><th>页</th><th>内容</th></tr>
+        <tr><td class="n">1</td><td>Summary（1 页，不加图）</td></tr>
+        <tr><td class="n">2</td><td>Contents</td></tr>
+        <tr><td class="n">3–4</td><td>Introduction（2 页为限）</td></tr>
+        <tr><td class="n">5</td><td>Assumptions + Notations</td></tr>
+        <tr><td class="n">6–8</td><td>Task 1 建模 2 页 + 结果 1 页</td></tr>
+        <tr><td class="n">9–11</td><td>Task 2 建模 + 验证</td></tr>
+        <tr><td class="n">12–15</td><td>Task 3（含指标定义）</td></tr>
+        <tr><td class="n">16–17</td><td>Discussion / 关键结论页</td></tr>
+        <tr><td class="n">18–20</td><td>Task 4</td></tr>
+        <tr><td class="n">21–22</td><td>Task 5 / 6</td></tr>
+        <tr><td class="n">23</td><td>灵敏度分析</td></tr>
+        <tr><td class="n">24</td><td>Strengths &amp; Weaknesses</td></tr>
+        <tr><td class="n">25</td><td>References</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>04 灵敏度 <span>四种做法，按实施成本排序</span></h2>
+      <ol class="tight">
+        <li><b>单参数三档扫描</b>（OAT）：取 −50% / 原值 / +50%，画三条曲线。评委原话：「as simple as exploring a different range of a parameter」。</li>
+        <li><b>参数重要性排序</b>：扫 3–5 个参数，用 Rank-Oval 图排出谁最敏感。</li>
+        <li><b>蒙特卡洛扰动</b>：给关键参数加扰动分布，报 95% 区间。</li>
+        <li><b>Sobol 指数</b>：要区分一阶/交互效应时用，成本最高。</li>
+      </ol>
+      <p style="margin-top:8px">收尾必须有一句结论：<em>the model is stable</em> / <em>most sensitive to X</em>。只画图不写结论等于没做。</p>
+    </section>
+
+    <section class="block">
+      <h2>05 提交前 1 小时 <span>错一条就可能降档</span></h2>
+      <ul class="tight check">
+        <li>总页数 ≤ 25（含摘要、目录、附录、参考文献）</li>
+        <li>每页页眉：Team # + Page X of N</li>
+        <li>全文无队员 / 学校 / 指导教师姓名</li>
+        <li>PDF 元数据里也无个人信息</li>
+        <li>摘要每一个数字，正文可查到同一数值</li>
+        <li>假设列表里的每一条，正文至少用到一次</li>
+        <li>图表编号连续，正文引用编号与实际一致</li>
+        <li>参考文献每条都被正文引用，格式全文统一</li>
+        <li>6 个子问题全部有明确结论段</li>
+        <li>核对当年 COMAP 规则（页数、AI 使用、匿名）</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <div class="foot">
+    <span>mcm-o-guide · MIT · 语料 502 篇 / 449 篇有效</span>
+    <a href="./">→ 在线摘要自检器（贴摘要 10 秒出报告）</a>
+    <a href="https://github.com/Timevelyer/mcm-o-guide">github.com/Timevelyer/mcm-o-guide</a>
+    <span class="no-print">打印本页：Ctrl / ⌘ + P，选 A4、缩放 100%</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -12,7 +12,10 @@
 > 初筛不到 5 分钟。评委只找三样东西：**每个 Task 的量化结论、方法链、模型名字**。
 > 这份指南把 502 篇获奖论文（2004–2024）和 3 篇官方评委点评，拆成你可以照着写的东西。
 
-**[→ 先试试在线摘要自检器](https://timevelyer.github.io/mcm-o-guide/)** —— 贴摘要，10 秒出体检报告，不用装任何东西。
+**在线工具（不用安装）**
+
+- **[摘要自检器](https://timevelyer.github.io/mcm-o-guide/)** —— 贴摘要，10 秒出体检报告 · [English](https://timevelyer.github.io/mcm-o-guide/en/)
+- **[一页纸清单](https://timevelyer.github.io/mcm-o-guide/cheatsheet.html)** —— 摘要骨架 + 页预算 + 提交前检查，A4 打印贴桌上
 
 ---
 

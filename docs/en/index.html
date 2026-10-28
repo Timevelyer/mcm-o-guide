@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Summary checker · MCM/ICM writing guide</title>
+<meta name="description" content="Paste your MCM/ICM summary and get a 7-point report in seconds: number density, task coverage, sentences with numbers, length, keywords, sensitivity, limitations. Thresholds are medians from 502 award-winning papers. Runs entirely in your browser.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://timevelyer.github.io/mcm-o-guide/en/">
+<link rel="alternate" hreflang="zh-CN" href="https://timevelyer.github.io/mcm-o-guide/">
+<link rel="alternate" hreflang="en" href="https://timevelyer.github.io/mcm-o-guide/en/">
+<link rel="alternate" hreflang="x-default" href="https://timevelyer.github.io/mcm-o-guide/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="mcm-o-guide">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="https://timevelyer.github.io/mcm-o-guide/en/">
+<meta property="og:title" content="MCM/ICM summary checker · thresholds from 502 award-winning papers">
+<meta property="og:description" content="Judges spend under five minutes on the first screen. They look for a quantitative result per task, the method chain, and a named model. Paste your summary, find out what is missing.">
+<meta property="og:image" content="https://timevelyer.github.io/mcm-o-guide/assets/og.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="mcm-o-guide — the summary is the checklist judges grade against">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MCM/ICM summary checker">
+<meta name="twitter:description" content="Seven checks, weighted by the medians of 502 award-winning papers. Runs locally, nothing uploaded.">
+<meta name="twitter:image" content="https://timevelyer.github.io/mcm-o-guide/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∑</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "MCM/ICM summary checker",
+  "url": "https://timevelyer.github.io/mcm-o-guide/en/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any browser",
+  "inLanguage": ["en", "zh-CN"],
+  "description": "Paste an MCM/ICM summary and get a seven-point report scored against medians from 502 award-winning papers.",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "license": "https://github.com/Timevelyer/mcm-o-guide/blob/main/LICENSE",
+  "codeRepository": "https://github.com/Timevelyer/mcm-o-guide",
+  "author": { "@type": "Person", "name": "Timevelyer", "url": "https://github.com/Timevelyer" }
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand"><b>mcm-o-guide</b> · MCM/ICM writing</div>
+    <nav>
+      <a href="#checker">Checker</a>
+      <a href="#rules">The seven checks</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/Timevelyer/mcm-o-guide">GitHub</a>
+      <a href="../" hreflang="zh-CN" lang="zh-CN">中文</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">502 award-winning papers · 2004–2024 · judges' commentaries</p>
+    <h1>A summary is not an introduction. It's the <em>checklist judges grade against</em>.</h1>
+    <p class="lede">
+      The first screen takes under five minutes. Judges look for three things: a quantitative
+      result for every task, the method chain, and the name of your model.
+      Paste your summary and see which one is missing — the thresholds are medians from 449 O/F/M papers.
+    </p>
+    <div class="cta">
+      <a class="btn" href="#checker">Run the check ↓</a>
+      <a class="btn ghost" href="https://github.com/Timevelyer/mcm-o-guide">Read the guide →</a>
+      <span class="hint">No sign-up · nothing uploaded · computed in your browser</span>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>437</b><span>median words in a winning summary</span></div>
+      <div class="fact"><b>20–35</b><span>numbers in an Outstanding summary</span></div>
+      <div class="fact"><b>93%</b><span>of O/F/M papers ran sensitivity</span></div>
+      <div class="fact"><b>35%</b><span>of teams ran none at all</span></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <section id="checker">
+      <h2>Summary checker</h2>
+      <p class="sub">Paste the body of your English summary. The thresholds are corpus medians, not taste — a low score does not mean bad writing, it usually means the judge has to work to find your conclusions.</p>
+
+      <div class="card tool">
+        <div class="tool-head"><span class="dot"></span> checker · runs locally</div>
+        <div class="tool-body">
+          <div class="pane">
+            <label class="field" for="summary">Your summary</label>
+            <textarea id="summary" spellcheck="false" placeholder="Paste your summary here…"></textarea>
+            <div class="row">
+              <button class="btn" id="run" type="button">Check</button>
+              <button class="copy" id="sample" type="button">Load sample</button>
+              <button class="copy" id="clear" type="button">Clear</button>
+              <span class="hint" id="count">0 words</span>
+            </div>
+          </div>
+          <div class="pane">
+            <div id="empty">The report appears here.</div>
+            <div id="result" hidden>
+              <div class="score">
+                <div class="ring">
+                  <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true">
+                    <circle cx="48" cy="48" r="42" fill="none" stroke="#e4ded2" stroke-width="7"></circle>
+                    <circle id="ring" cx="48" cy="48" r="42" fill="none" stroke="#b23a16" stroke-width="7"
+                            stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"></circle>
+                  </svg>
+                  <div class="val" id="scoreVal">0</div>
+                </div>
+                <div class="score-txt">
+                  <h3 id="verdict">—</h3>
+                  <p id="verdictSub">—</p>
+                </div>
+              </div>
+              <ul class="checks" id="checks"></ul>
+              <div class="advice" id="advice" hidden></div>
+              <div class="row" id="reportRow" hidden>
+                <button class="copy" id="copyReport" type="button">Copy the report</button>
+                <span class="hint">Scores and verdicts only — your text is never included</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules" style="margin-top:56px">
+      <h2>Why these seven thresholds</h2>
+      <p class="sub">Each one is taken from the distribution in the corpus, not from a list of "best practices".</p>
+      <div class="grid3">
+        <div class="mini"><span class="num">01 / NUMBERS</span><h4>Number density</h4><p>Outstanding summaries carry 20–35 concrete numbers; Meritorious ones 10–15. This is the most stable gap between the two tiers.</p></div>
+        <div class="mini"><span class="num">02 / TASKS</span><h4>Task coverage</h4><p>Every sub-problem gets at least one sentence of method plus a quantitative result. A missing task is a direct elimination in the second round; roughly 25% of teams do it.</p></div>
+        <div class="mini"><span class="num">03 / LENGTH</span><h4>Length</h4><p>Median 437 words, interquartile range 350–520. Anything past 600 usually means too much background.</p></div>
+        <div class="mini"><span class="num">04 / KEYWORDS</span><h4>Keywords</h4><p>Four or five, and one of them must be your model name — a memorable label such as GIID or BDS.</p></div>
+        <div class="mini"><span class="num">05 / SENSITIVITY</span><h4>Sensitivity</h4><p>The line that recurs in judges' commentaries: teams that do sensitivity properly almost always stand out.</p></div>
+        <div class="mini"><span class="num">06 / LIMITS</span><h4>Limitations</h4><p>End on solid ground: strengths, limitations, conclusion. Two of the three beats a conclusion alone.</p></div>
+      </div>
+
+      <h2 style="margin-top:48px">Why papers get cut · incidence</h2>
+      <p class="sub">Cross-read from judges' commentaries and corpus statistics; use it to decide what to fix first.</p>
+      <div class="bars">
+        <div class="bar-row"><span>No quantitative conclusion</span><span class="bar"><i style="width:40%"></i></span><b>~40%</b></div>
+        <div class="bar-row"><span>No sensitivity analysis</span><span class="bar"><i style="width:35%"></i></span><b>~35%</b></div>
+        <div class="bar-row"><span>Figures never interpreted in text</span><span class="bar"><i style="width:30%"></i></span><b>~30%</b></div>
+        <div class="bar-row"><span>A sub-problem left unanswered</span><span class="bar"><i style="width:25%"></i></span><b>~25%</b></div>
+        <div class="bar-row"><span>Assumptions disconnected from the model</span><span class="bar"><i style="width:20%"></i></span><b>~20%</b></div>
+      </div>
+    </section>
+
+    <section id="install" style="margin-top:56px">
+      <h2>Install it into your agent</h2>
+      <p class="sub">The guide ships as a skill pack. Once installed it is picked up when you draft, revise or audit a paper. You can also just read it as a handbook.</p>
+      <pre class="install" id="cmd">git clone https://github.com/Timevelyer/mcm-o-guide.git
+mv mcm-o-guide ~/.config/opencode/skills/mcm-o-guide   # OpenCode
+mv mcm-o-guide ~/.claude/skills/mcm-o-guide            # or Claude Code</pre>
+      <div class="row">
+        <button class="copy" id="copyCmd" type="button">Copy commands</button>
+        <span class="hint">On Windows use <code>Move-Item</code>. Entry point is SKILL.md; the English edition is SKILL.en.md.</span>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MIT License · corpus: 502 MCM/ICM award-winning papers (2004–2024)</span>
+    <a class="star" href="https://github.com/Timevelyer/mcm-o-guide">★ Star on GitHub</a>
+    <nav>
+      <a href="https://github.com/Timevelyer/mcm-o-guide#readme">README</a>
+      <a href="https://github.com/Timevelyer/mcm-o-guide/blob/main/SKILL.en.md">SKILL.en.md</a>
+      <a href="https://github.com/Timevelyer/mcm-o-guide/releases">Releases</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../checker.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var SAMPLE = "As extreme weather intensifies and urbanisation continues, urban drainage systems face growing pressure from both heavier rainfall and expanding impervious surfaces. To explore this phenomenon, we develop the REEF (Resilience Evaluation of Engineered Flow) model to quantify how drainage networks degrade and recover under compound stressors. Before modeling, we classified 12 years of hourly rainfall records into three regimes, matched them against land-use data from 48 monitoring stations, and estimated pipe roughness and infiltration rates from 216 field measurements. Parameters are set from municipal engineering standards, with ranges tested in the sensitivity section. For Task 1, we established a coupled hydrological-network model, incorporating pipe capacity, surface runoff and backwater effects. The results show that peak discharge rises by 34.2% under a 50-year storm relative to the 10-year baseline, and that 23.6% of nodes exceed capacity for more than 40 minutes. For Task 2, we calculated the resilience index, recovery time and failure probability to evaluate system robustness. Results indicate that recovery time increases from 6.4 h to 19.8 h as impervious area grows by 17%, while the resilience index falls from 0.81 to 0.57. For Task 3, we compared three retrofit scenarios, namely centralized storage, distributed storage and green infrastructure, and found that distributed storage reduces overflow volume by 41.5% at 62% of the centralized cost, with a payback period of 9.2 years. For Task 4, we varied rainfall intensity from 20 mm/h to 140 mm/h and found that the marginal benefit of additional storage flattens beyond 80 mm/h, where each extra 10% capacity yields only a 1.8% reduction in overflow. For Task 5, we mapped flooding exposure onto 5 districts and found that 2 of them account for 68% of at-risk residents, suggesting that targeted retrofits outperform uniform upgrades by a factor of 2.3. Finally, sensitivity analysis on infiltration rate, pipe roughness and rainfall temporal resolution confirms that the model is stable: outputs change by less than 7.3% across the tested ranges. We also discuss strengths, weaknesses and a phased retrofit priority list for city planners. Keywords: REEF, resilience index, urban drainage, scenario analysis";
+
+  var el = {
+    ta: document.getElementById("summary"),
+    run: document.getElementById("run"),
+    sample: document.getElementById("sample"),
+    clear: document.getElementById("clear"),
+    count: document.getElementById("count"),
+    empty: document.getElementById("empty"),
+    result: document.getElementById("result"),
+    checks: document.getElementById("checks"),
+    advice: document.getElementById("advice"),
+    scoreVal: document.getElementById("scoreVal"),
+    ring: document.getElementById("ring"),
+    verdict: document.getElementById("verdict"),
+    verdictSub: document.getElementById("verdictSub"),
+    copyCmd: document.getElementById("copyCmd"),
+    cmd: document.getElementById("cmd"),
+    reportRow: document.getElementById("reportRow"),
+    copyReport: document.getElementById("copyReport")
+  };
+
+  var CIRC = 2 * Math.PI * 42;
+  var M = window.MCMChecker;
+
+  var T = {
+    rows: {
+      numbers:     { label: "Number density",   ref: "target 20–35",        fmt: function (v) { return v + ""; } },
+      tasks:       { label: "Task coverage",    ref: "one per sub-problem",  fmt: function (v) { return v.length ? "Task " + v.join(" / ") : "none found"; } },
+      embedded:    { label: "Sentences w/ numbers", ref: "≥ 6",              fmt: function (v) { return v.withNumber + " / " + v.total; } },
+      length:      { label: "Length",           ref: "330–540",              fmt: function (v) { return v + " words"; } },
+      keywords:    { label: "Keywords",         ref: "4–5, incl. model name", fmt: function (v) { return v === null ? "missing" : v + ""; } },
+      sensitivity: { label: "Sensitivity",      ref: "at least one result",  fmt: function (v) { return v ? "mentioned" : "not mentioned"; } },
+      limits:      { label: "Limits / conclusion", ref: "strengths / limits / conclusion", fmt: function (v) { return v ? "mentioned" : "not mentioned"; } }
+    },
+    tags: { ok: "OK", warn: "FIX", bad: "MISS" },
+    verdictSub: "Seven corpus-weighted checks, 100 points. This grades the summary only, not the model.",
+    allPass: "All seven pass. Next: make sure every number in the body matches the summary exactly — that is the most common deduction at the final round.",
+    tips: {
+      numbers: function (n) { return "Only " + n + " numbers. The Outstanding median is 20–35 — give every task at least one quantitative result (a percentage, an absolute value, a comparison baseline)."; },
+      tasks: function (n) { return "Found " + n + " tasks. Check that the summary answers every sub-problem; a missing one is a direct elimination in the second round."; },
+      embedded: function (n) { return "Only " + n + " sentences carry a number. Replace \"results are shown in Figure X\" with the actual value."; },
+      long: function (n) { return n + " words — too long. Most overlong summaries spend the surplus on background; cut it to two sentences."; },
+      short: function (n) { return n + " words — too short. Both the method chain and the results end up looking under-explained."; },
+      noKeywords: function () { return "No Keywords line. Add 4–5 keywords, with your model name first."; },
+      fewKeywords: function (n) { return "Only " + n + " keywords. Bring it to 4–5."; },
+      sensitivity: function () { return "No sensitivity or robustness. Add one line — \"sensitivity analysis on X confirms …\" — judges call this out explicitly as a plus."; },
+      limits: function () { return "No limitations. After the conclusion, add one limitation plus a direction for improvement."; }
+    },
+    verdict: function (score) {
+      return score >= 85 ? "Ready to submit" : score >= 70 ? "One push away" : score >= 50 ? "Needs work" : "At risk in the first round";
+    },
+    tip: function (t) { return T.tips[t.code](t.n); },
+    rowValue: function (row) { return T.rows[row.id].fmt(row.value); }
+  };
+
+  var lastResult = null;
+
+  function buildReport(r){
+    var lines = ["MCM/ICM summary check · " + r.score + "/100 (" + T.verdict(r.score) + ")", ""];
+    r.rows.forEach(function(row){
+      var meta = T.rows[row.id];
+      lines.push(meta.label + " — " + T.tags[row.level] + " — " + T.rowValue(row) + " (" + meta.ref + ")");
+    });
+    lines.push("");
+    lines.push("What to fix");
+    if (r.tips.length) {
+      r.tips.forEach(function(t){ lines.push("- " + T.tip(t)); });
+    } else {
+      lines.push("- " + T.allPass);
+    }
+    lines.push("");
+    lines.push("Checker: https://timevelyer.github.io/mcm-o-guide/en/");
+    return lines.join("\n");
+  }
+
+  function render(){
+    var t = el.ta.value;
+    el.count.textContent = M.count(t) + " words";
+    if (!t.trim()) {
+      lastResult = null;
+      el.result.hidden = true;
+      el.empty.hidden = false;
+      el.reportRow.hidden = true;
+      return;
+    }
+    var r = M.analyze(t);
+    lastResult = r;
+    el.empty.hidden = true;
+    el.result.hidden = false;
+    el.reportRow.hidden = false;
+
+    el.scoreVal.textContent = r.score;
+    el.ring.setAttribute("stroke-dasharray", CIRC.toFixed(1));
+    el.ring.setAttribute("stroke-dashoffset", (CIRC * (1 - r.score / 100)).toFixed(1));
+    el.ring.setAttribute("stroke", r.score >= 80 ? "#14663f" : r.score >= 55 ? "#8a5a00" : "#a3241b");
+    el.ring.setAttribute("aria-label", "score " + r.score + " out of 100");
+
+    el.verdict.textContent = T.verdict(r.score);
+    el.verdictSub.textContent = T.verdictSub;
+
+    el.checks.innerHTML = r.rows.map(function(row){
+      var meta = T.rows[row.id];
+      return '<li><span class="tag ' + row.level + '">' + T.tags[row.level] + "</span>" +
+             "<span>" + meta.label + ' <span class="m">' + meta.ref + "</span></span>" +
+             '<span class="m">' + T.rowValue(row) + "</span></li>";
+    }).join("");
+
+    el.advice.hidden = false;
+    el.advice.innerHTML = r.tips.length
+      ? r.tips.map(function (t) { return "<p>· " + T.tip(t) + "</p>"; }).join("")
+      : "<p>· " + T.allPass + "</p>";
+  }
+
+  function flash(btn, text){
+    var original = btn.getAttribute("data-label") || btn.textContent;
+    btn.setAttribute("data-label", original);
+    btn.textContent = text;
+    setTimeout(function(){ btn.textContent = original; }, 1600);
+  }
+
+  function copyText(text, done, failed){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, failed);
+      return;
+    }
+    var tmp = document.createElement("textarea");
+    tmp.value = text;
+    tmp.setAttribute("readonly", "");
+    tmp.style.position = "fixed";
+    tmp.style.top = "-1000px";
+    document.body.appendChild(tmp);
+    tmp.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(tmp);
+    (ok ? done : failed)();
+  }
+
+  el.run.addEventListener("click", render);
+  el.ta.addEventListener("input", render);
+  el.ta.addEventListener("keydown", function(e){
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") { e.preventDefault(); render(); }
+  });
+  el.sample.addEventListener("click", function(){ el.ta.value = SAMPLE; render(); el.ta.focus(); });
+  el.clear.addEventListener("click", function(){ el.ta.value = ""; render(); el.ta.focus(); });
+
+  el.copyCmd.addEventListener("click", function(){
+    copyText(el.cmd.textContent, function(){ flash(el.copyCmd, "Copied"); }, function(){ flash(el.copyCmd, "Copy failed"); });
+  });
+
+  el.copyReport.addEventListener("click", function(){
+    if (!lastResult) return;
+    copyText(buildReport(lastResult), function(){ flash(el.copyReport, "Copied — paste it to your team"); }, function(){ flash(el.copyReport, "Copy failed"); });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
