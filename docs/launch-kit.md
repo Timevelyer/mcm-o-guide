@@ -100,28 +100,32 @@
 
 ## 4. awesome list PR
 
-### 4.1 两个目标，规则完全不同（2026-10 实测）
+### 4.1 三个目标的实况（2026-10-28 实测）
 
-**ComposioHQ/awesome-claude-skills**（78.1k star）—— 现在就能提
+**ComposioHQ/awesome-claude-skills**（78.1k star）—— 目前关闭
 
-- 允许**外链**条目（README 里已有 64 条指向别人仓库），不需要把技能复制进他们的仓库
-- 位置：`### Communication & Writing`，按字母序插在 `family-history-research` 之后、`Meeting Insights Analyzer` 之前
-- 格式（照抄现有条目风格，末尾署名）：
+- 规则上允许**外链**条目（README 里已有 64 条指向别人仓库），位置 `### Communication & Writing`，字母序插在 `family-history-research` 与 `Meeting Insights Analyzer` 之间，末尾署名即可：
 
 ```markdown
 - [mcm-o-guide](https://github.com/Timevelyer/mcm-o-guide) - Writing and QA guide for MCM/ICM modeling contests, distilled from 502 award-winning papers; includes a browser-based summary checker. *By [@Timevelyer](https://github.com/Timevelyer)*
 ```
 
-- PR 只改 `README.md` 一行，不新增文件
+- 但实际上**暂时提不了**：该仓库 2026-10-22 之后新增 PR 数为 0（此前 10-21 一天 24 个），同时积压 1,702 个待处理 PR。fork 与分支已备好，API 提 PR 直接返回 permission denied —— 是仓库侧停止接收，不是账号问题
+- 它重开后只需一键：[compare 链接](https://github.com/ComposioHQ/awesome-claude-skills/compare/master...Timevelyer:add-mcm-o-guide)
 
-**hesreallyhim/awesome-claude-code**（56.7k star）—— 现在提不了
+**VoltAgent/awesome-agent-skills**（36.5k star）—— 11 月再投
 
-- 硬门槛：资源要么**满 14 天**且有持续提交，要么 **≥100 star**。本仓库 2026-10-27 才发布，两条都不满足，现在提会被机器人自动关闭
-- 只能用**网页表单**提交（`issues/new?template=recommend-resource.yml`），官方原文：「It is **not** possible to submit a resource recommendation using the `gh` CLI」，而且**不要开 PR**
-- 一次只能推荐一个资源，且必须由真人提交
-- 计划：满 14 天（11 月上旬）或 star 过百后再投
+- 10-27 仍在合并外部 fork 的 PR，是这类列表里少数还活着的
+- 格式：加到 `Community Skills` 对应子类末尾，`- **[author/skill-name](链接)** - 10 词以内说明`；PR 标题 `Add skill: Timevelyer/mcm-o-guide`
+- 硬门槛：**「必须有真实社区使用量，刚创建的新技能不收」**。仓库 10-27 才发布，现在投会因「太新」被拒，等积累到 11 月中
 
-**iskandaryv/awesome-claude-skills**：0 star，跳过，不值得花时间。
+**hesreallyhim/awesome-claude-code**（56.7k star）—— 11 月再投
+
+- 硬门槛：资源满 **14 天**且有后续提交，**或 ≥100 star**；否则机器人自动关
+- 只能用**网页表单**提交（`issues/new?template=recommend-resource.yml`），官方明确禁止 PR 与 `gh` CLI，必须真人提交
+- 计划：11 月 10 日之后
+
+**iskandaryv/awesome-claude-skills**：0 star，跳过。
 
 ### 4.2 PR 正文模板（ComposioHQ 用，英文，直接贴）
 
@@ -143,6 +147,7 @@ Happy to adjust the category or wording.
 - [x] 有在线 demo（自检器）和截图（`docs/assets/og.png`）
 - [ ] 仓库满 14 天 或 100 star —— 只对 awesome-claude-code 有要求
 - [ ] PR 只改 `README.md`，不动别的文件
+- [ ] 目标仓库**最近 7 天有新 PR**（没有 = 已停止接收，别白忙）
 - [ ] 条目放在目标仓库的正确分类、正确字母位置
 - [ ] 描述写「它是什么」，不写「你为什么该用它」（awesome-claude-code 明确反对 pitch 语气）
 - [ ] 不在别人的 Issue / PR 里贴自己的链接
