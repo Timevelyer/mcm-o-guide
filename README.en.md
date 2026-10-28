@@ -43,8 +43,8 @@ mv mcm-o-guide ~/.claude/skills/mcm-o-guide
 
 ### Option 2: just read it as a handbook
 
-Nothing to install. Start with [SKILL.md](SKILL.md), then jump to the topic files under [references/](references) as needed.
-The "when to use what" table in [使用指南.md](使用指南.md) (Chinese) is the fastest way to find the right file.
+Nothing to install. Start with [SKILL.en.md](SKILL.en.md) (English edition of the main skill file), then jump to the topic files under [references/](references) as needed.
+The "when to use what" table in [GUIDE.en.md](GUIDE.en.md) is the fastest way to find the right file. The Chinese originals are [SKILL.md](SKILL.md) and [使用指南.md](使用指南.md).
 
 ### Option 3: run the tool scripts
 
@@ -63,7 +63,9 @@ See [scripts/README.md](scripts/README.md) for details.
 ```
 mcm-o-guide/
 ├── SKILL.md                    # main skill file: 13 chapters, from judge mechanics to sentence bank
+├── SKILL.en.md                 # English edition of the skill file
 ├── 使用指南.md                  # Chinese user guide + scenario quick-reference table
+├── GUIDE.en.md                 # English edition of the user guide
 ├── playbooks/                  # role training: modeling / coding / writing / research
 ├── references/                 # 23 topic files: summary templates, model matrix, judges' notes, pitfalls, cases...
 ├── templates/                  # LaTeX and Markdown paper skeletons
@@ -81,7 +83,7 @@ Worth opening first:
 | [references/judge-commentary.md](references/judge-commentary.md) | Official judges' commentaries with cross-analysis |
 | [references/common-errors.md](references/common-errors.md) | Catalogue of fatal mistakes |
 
-Full index (Chinese): [使用指南.md](使用指南.md).
+Full index: [GUIDE.en.md](GUIDE.en.md) (English) / [使用指南.md](使用指南.md) (Chinese).
 
 ## Data basis
 

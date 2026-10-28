@@ -46,6 +46,8 @@ mv mcm-o-guide ~/.claude/skills/mcm-o-guide
 不装任何东西，从 [SKILL.md](SKILL.md) 开始读，再按需跳转 [references/](references) 下的专题文件。
 先用 [使用指南.md](使用指南.md) 里的"什么时候用"表格定位，效率最高。
 
+英文版文档：[SKILL.en.md](SKILL.en.md)（主技能文件全译）、[GUIDE.en.md](GUIDE.en.md)（使用指南全译）。
+
 ### 方式三：跑工具脚本
 
 ```bash
@@ -63,7 +65,9 @@ node scripts/benchmark-paper.mjs                   # 与顶尖论文对标打分
 ```
 mcm-o-guide/
 ├── SKILL.md                    # 主技能文件：13 章，从评委机制到句式库
+├── SKILL.en.md                 # 主技能文件英文版
 ├── 使用指南.md                  # 中文使用说明 + 场景速查表
+├── GUIDE.en.md                 # 使用指南英文版
 ├── playbooks/                  # 分工能力训练：建模 / 编程 / 写作 / 检索
 ├── references/                 # 23 篇专题：摘要模板、模型矩阵、评委点评、避坑、案例…
 ├── templates/                  # LaTeX 与 Markdown 论文骨架

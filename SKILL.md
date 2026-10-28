@@ -5,6 +5,8 @@ description: MCM/ICM 优秀论文写作全流程指南——基于 502 篇历年
 
 # MCM/ICM 优秀论文写作全流程指南
 
+> **简体中文** · [English](SKILL.en.md)
+
 > 本技能基于 502 篇 MCM/ICM 获奖论文（含 Outstanding / Finalist / Meritorious）的
 > 语料统计与逐篇精读，以及 3 篇官方评委点评（2009 A/B、2021 Tips）提炼。
 > 核心目标：帮助队伍在 4 天内产出"评委愿意读到第 25 页"的论文。
@@ -407,7 +409,7 @@ We also discuss strengths, weaknesses and [结论/建议].
 Keywords: [模型名], [关键词2], [关键词3], [关键词4]
 ```
 
-### 12.2 关键句式库
+### 13.2 关键句式库
 
 | 场景 | 句式 |
 |---|---|
@@ -420,7 +422,7 @@ Keywords: [模型名], [关键词2], [关键词3], [关键词4]
 | 局限 | "We [简化], which may cause [偏差]. Future work could [改进方向]" |
 | 假设 | "Assumption N: [陈述]. Justification: [理由]. This assumption is used in [模型/公式]" |
 
-### 12.3 评委点评精华摘录
+### 13.3 评委点评精华摘录
 
 - *"The summary is the first thing that a judge will read. It is the first impression, and it imparts the expectations for the whole paper."* — 2009 A
 - *"Teams that managed to maintain some level of consistency stood out from the entries."* — 2009 A
