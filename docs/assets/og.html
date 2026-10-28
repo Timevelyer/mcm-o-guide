@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>mcm-o-guide social preview</title>
+<style>
+  html,body{margin:0;padding:0;background:#f7f4ee}
+  #og{width:1280px;height:640px;position:relative;overflow:hidden;background:#f7f4ee;
+      font-family:"Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:#16150f;display:flex;flex-direction:column;justify-content:space-between}
+  .grid{position:absolute;inset:0;background-image:linear-gradient(#e8e2d5 1px,transparent 1px),linear-gradient(90deg,#e8e2d5 1px,transparent 1px);
+        background-size:64px 64px;opacity:.5}
+  .veil{position:absolute;inset:0;background:radial-gradient(120% 90% at 85% 0%,rgba(178,58,22,.10),transparent 60%)}
+  .inner{position:relative;padding:64px 72px;display:flex;flex-direction:column;height:100%;box-sizing:border-box}
+  .top{display:flex;align-items:center;gap:14px;font:600 15px/1 ui-monospace,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase;color:#b23a16}
+  .rule{flex:1;height:1px;background:#d8d1c2}
+  h1{font-family:"Iowan Old Style","Noto Serif SC","Songti SC",Georgia,serif;font-weight:600;
+     font-size:76px;line-height:1.08;letter-spacing:-.02em;margin:46px 0 0}
+  h1 em{font-style:normal;color:#b23a16}
+  p.sub{font-size:23px;line-height:1.5;color:#4a4740;margin:22px 0 0;max-width:760px}
+  .bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
+  .stats{display:flex;gap:44px}
+  .stat b{display:block;font:600 34px/1.1 ui-monospace,Consolas,monospace;letter-spacing:-.02em}
+  .stat span{font-size:13px;color:#7d7970;letter-spacing:.02em}
+  .badge{border:1px solid #16150f;padding:12px 20px;font:600 16px/1 ui-monospace,Consolas,monospace;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div id="og">
+  <div class="grid"></div>
+  <div class="veil"></div>
+  <div class="inner">
+    <div class="top"><span>mcm-o-guide</span><span class="rule"></span><span>MCM / ICM · 2004–2024</span></div>
+    <div>
+      <h1>摘要不是自我介绍，<br>是<em>给评委的验收单</em>。</h1>
+      <p class="sub">502 篇获奖论文 + 3 篇官方评委点评，提炼成可执行的写作口径，<br>外加一个 10 秒出结果的摘要自检器。</p>
+    </div>
+    <div class="bottom">
+      <div class="stats">
+        <div class="stat"><b>437</b><span>中位词数</span></div>
+        <div class="stat"><b>20–35</b><span>O 奖数字个数</span></div>
+        <div class="stat"><b>93%</b><span>做了灵敏度分析</span></div>
+      </div>
+      <div class="badge">github.com/Timevelyer/mcm-o-guide</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

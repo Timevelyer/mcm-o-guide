@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>摘要自检器 · MCM/ICM 写作指南</title>
+<meta name="description" content="粘贴你的 MCM/ICM 摘要，10 秒得到体检报告：数字密度、Task 覆盖、关键词、灵敏度、局限性。基于 502 篇获奖论文的统计口径。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MCM/ICM 摘要自检器">
+<meta property="og:description" content="502 篇获奖论文 + 3 篇官方评委点评提炼的摘要体检，10 秒出报告。">
+<meta property="og:image" content="assets/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∑</text></svg>">
+<style>
+  :root{
+    --paper:#f7f4ee;
+    --paper-2:#fffdf9;
+    --ink:#16150f;
+    --ink-2:#4a4740;
+    --ink-3:#7d7970;
+    --line:#ddd7ca;
+    --accent:#b23a16;
+    --accent-soft:#f3e2d9;
+    --ok:#14663f;
+    --ok-soft:#e2efe6;
+    --warn:#8a5a00;
+    --warn-soft:#f7ecd6;
+    --bad:#a3241b;
+    --bad-soft:#f8e2df;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Consolas",monospace;
+    --sans:"Inter","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --serif:"Iowan Old Style","Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    background-image:linear-gradient(var(--paper) 0 0);
+  }
+  a{color:var(--accent);text-underline-offset:3px}
+  a:hover{color:#7d260c}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header.top{border-bottom:1px solid var(--line);background:rgba(247,244,238,.85);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10}
+  .top-in{display:flex;align-items:center;gap:16px;height:56px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2)}
+  .brand b{color:var(--ink)}
+  .top nav{margin-left:auto;display:flex;gap:18px;font-size:14px}
+  .top nav a{color:var(--ink-2);text-decoration:none}
+  .top nav a:hover{color:var(--accent)}
+  .hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 20px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5vw,52px);line-height:1.16;letter-spacing:-.01em;margin:0 0 20px;max-width:19ch}
+  h1 em{font-style:normal;color:var(--accent);border-bottom:2px solid var(--accent-soft);padding-bottom:2px}
+  .lede{font-size:clamp(16px,2vw,19px);color:var(--ink-2);max-width:56ch;margin:0 0 28px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:var(--ink);color:var(--paper-2);
+       padding:11px 18px;font-size:14px;font-weight:600;text-decoration:none;border-radius:2px;cursor:pointer;font-family:var(--sans)}
+  .btn:hover{background:#000;color:#fff}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--ink);background:var(--paper-2);color:var(--ink)}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:40px 0 0}
+  .fact{background:var(--paper-2);padding:18px 20px}
+  .fact b{display:block;font-family:var(--mono);font-size:26px;line-height:1.1;letter-spacing:-.02em}
+  .fact span{font-size:12.5px;color:var(--ink-3)}
+  main{padding:56px 0 72px}
+  h2{font-family:var(--serif);font-size:clamp(22px,3vw,30px);margin:0 0 8px;letter-spacing:-.01em}
+  .sub{color:var(--ink-2);margin:0 0 24px;max-width:60ch}
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:3px}
+  .tool{padding:0;overflow:hidden}
+  .tool-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:.7}
+  .tool-body{display:grid;grid-template-columns:1.05fr .95fr;gap:0}
+  .pane{padding:20px}
+  .pane + .pane{border-left:1px solid var(--line);background:#fbf9f4}
+  label.field{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:8px}
+  textarea{width:100%;min-height:300px;resize:vertical;padding:14px;border:1px solid var(--line);border-radius:2px;
+           background:var(--paper-2);color:var(--ink);font-family:var(--mono);font-size:13.5px;line-height:1.7}
+  textarea:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  .hint{font-size:12.5px;color:var(--ink-3)}
+  .score{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+  .ring{width:96px;height:96px;flex:0 0 auto;position:relative}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .val{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:24px;font-weight:600}
+  .score-txt h3{margin:0 0 4px;font-size:17px}
+  .score-txt p{margin:0;font-size:13px;color:var(--ink-3)}
+  ul.checks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  ul.checks li{display:grid;grid-template-columns:18px 1fr auto;gap:10px;align-items:baseline;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+  ul.checks li:last-child{border-bottom:0}
+  .tag{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:2px;white-space:nowrap}
+  .tag.ok{background:var(--ok-soft);color:var(--ok)}
+  .tag.warn{background:var(--warn-soft);color:var(--warn)}
+  .tag.bad{background:var(--bad-soft);color:var(--bad)}
+  .m{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+  .advice{margin-top:14px;padding:12px 14px;background:var(--accent-soft);border-left:3px solid var(--accent);font-size:13.5px}
+  .advice p{margin:0 0 6px}
+  .advice p:last-child{margin:0}
+  #empty{color:var(--ink-3);font-size:13.5px;padding:24px 0;text-align:center}
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
+  .mini{padding:18px;border:1px solid var(--line);background:var(--paper-2);border-radius:3px}
+  .mini h4{margin:0 0 6px;font-size:14.5px;font-family:var(--sans)}
+  .mini p{margin:0;font-size:13.5px;color:var(--ink-2)}
+  .num{font-family:var(--mono);font-size:12px;color:var(--accent);display:block;margin-bottom:8px}
+  .bars{margin-top:8px;display:grid;gap:14px}
+  .bar-row{display:grid;grid-template-columns:minmax(120px,1.1fr) 3fr 52px;gap:14px;align-items:center;font-size:13.5px}
+  .bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+  .bar-row b{font-family:var(--mono);font-size:12.5px;text-align:right;color:var(--ink-2)}
+  pre.install{background:#16150f;color:#f2ece1;padding:16px 18px;border-radius:3px;overflow:auto;font-family:var(--mono);font-size:13px;line-height:1.7;margin:12px 0 0}
+  .copy{background:transparent;border:1px solid var(--line);color:var(--ink-2);font-size:12.5px;padding:5px 10px;border-radius:2px;cursor:pointer;font-family:var(--sans)}
+  .copy:hover{border-color:var(--ink);color:var(--ink)}
+  footer{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--ink-3);font-size:13.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  footer nav{margin-left:auto;display:flex;gap:18px}
+  footer a{color:var(--ink-2);text-decoration:none}
+  footer a:hover{color:var(--accent)}
+  .star{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);padding:6px 12px;border-radius:2px;text-decoration:none;color:var(--ink);font-size:13px}
+  .star:hover{background:var(--ink);color:var(--paper-2);border-color:var(--ink)}
+  @media (max-width:820px){
+    .tool-body{grid-template-columns:1fr}
+    .pane + .pane{border-left:0;border-top:1px solid var(--line)}
+    .hero{padding:44px 0 32px}
+    .bar-row{grid-template-columns:1fr 2fr 46px}
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand"><b>mcm-o-guide</b> · 美赛写作指南</div>
+    <nav>
+      <a href="#checker">摘要自检</a>
+      <a href="#rules">检查口径</a>
+      <a href="#install">安装</a>
+      <a href="https://github.com/Timevelyer/mcm-o-guide">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">502 篇获奖论文 · 2004–2024 · 评委点评</p>
+    <h1>摘要不是自我介绍，是<em>给评委的验收单</em>。</h1>
+    <p class="lede">
+      初筛不到 5 分钟。评委只找三样东西：每个 Task 的量化结论、方法链、模型名字。
+      把摘要贴进来，10 秒告诉你缺了哪一样 —— 口径来自 449 篇 O/F/M 论文的中位数。
+    </p>
+    <div class="cta">
+      <a class="btn" href="#checker">开始自检 ↓</a>
+      <a class="btn ghost" href="https://github.com/Timevelyer/mcm-o-guide">查看指南 →</a>
+      <span class="hint">无需登录 · 不上传 · 全在浏览器本地计算</span>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>437</b><span>获奖摘要词数中位数</span></div>
+      <div class="fact"><b>20–35</b><span>O 奖摘要里的数字个数</span></div>
+      <div class="fact"><b>93%</b><span>O/F/M 论文做了灵敏度分析</span></div>
+      <div class="fact"><b>35%</b><span>队伍完全没做灵敏度</span></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <section id="checker">
+      <h2>摘要自检器</h2>
+      <p class="sub">粘贴英文 Summary 正文。判定标准是统计中位数，不是个人品味 —— 分数低不等于写得差，但通常意味着评委要多花时间找结论。</p>
+
+      <div class="card tool">
+        <div class="tool-head"><span class="dot"></span> checker · 本地运行</div>
+        <div class="tool-body">
+          <div class="pane">
+            <label class="field" for="summary">你的 Summary</label>
+            <textarea id="summary" spellcheck="false" placeholder="Paste your summary here…"></textarea>
+            <div class="row">
+              <button class="btn" id="run" type="button">检查</button>
+              <button class="copy" id="sample" type="button">填入示例</button>
+              <button class="copy" id="clear" type="button">清空</button>
+              <span class="hint" id="count">0 词</span>
+            </div>
+          </div>
+          <div class="pane">
+            <div id="empty">检查结果会显示在这里。</div>
+            <div id="result" hidden>
+              <div class="score">
+                <div class="ring">
+                  <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true">
+                    <circle cx="48" cy="48" r="42" fill="none" stroke="#e4ded2" stroke-width="7"></circle>
+                    <circle id="ring" cx="48" cy="48" r="42" fill="none" stroke="#b23a16" stroke-width="7"
+                            stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"></circle>
+                  </svg>
+                  <div class="val" id="scoreVal">0</div>
+                </div>
+                <div class="score-txt">
+                  <h3 id="verdict">—</h3>
+                  <p id="verdictSub">—</p>
+                </div>
+              </div>
+              <ul class="checks" id="checks"></ul>
+              <div class="advice" id="advice" hidden></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules" style="margin-top:56px">
+      <h2>这七项凭什么这么判</h2>
+      <p class="sub">每一条都对着语料里的分布，不是拍脑袋的「最佳实践」。</p>
+      <div class="grid3">
+        <div class="mini"><span class="num">01 / NUMBERS</span><h4>数字密度</h4><p>O 奖摘要 20–35 个具体数字，M 奖只有 10–15 个。这是两档之间最稳定的差距。</p></div>
+        <div class="mini"><span class="num">02 / TASKS</span><h4>Task 覆盖</h4><p>每个子问题至少一句「方法 + 量化结果」。漏掉 Task 是复筛阶段的直接淘汰项，约 25% 的队伍踩过。</p></div>
+        <div class="mini"><span class="num">03 / LENGTH</span><h4>长度</h4><p>中位数 437 词，四分位区间 350–520。超过 600 词通常意味着背景铺陈过多。</p></div>
+        <div class="mini"><span class="num">04 / KEYWORDS</span><h4>关键词</h4><p>4–5 个，且必须包含你的模型名（GIID、BDS 这类可记忆的标签）。</p></div>
+        <div class="mini"><span class="num">05 / SENSITIVITY</span><h4>灵敏度</h4><p>评委语料里反复出现的一句话：认真做灵敏度的队伍几乎总能脱颖而出。</p></div>
+        <div class="mini"><span class="num">06 / LIMITS</span><h4>局限性</h4><p>最后一句要落地：优势 / 局限 / 结论，三选二也比只写结论强。</p></div>
+      </div>
+
+      <h2 style="margin-top:48px">常见淘汰原因 · 发生率</h2>
+      <p class="sub">来自评委点评与语料统计的交叉推断，用于判断先补哪一项。</p>
+      <div class="bars">
+        <div class="bar-row"><span>摘要无具体数字结论</span><span class="bar"><i style="width:40%"></i></span><b>~40%</b></div>
+        <div class="bar-row"><span>无灵敏度分析</span><span class="bar"><i style="width:35%"></i></span><b>~35%</b></div>
+        <div class="bar-row"><span>图表无正文解读</span><span class="bar"><i style="width:30%"></i></span><b>~30%</b></div>
+        <div class="bar-row"><span>遗漏子问题</span><span class="bar"><i style="width:25%"></i></span><b>~25%</b></div>
+        <div class="bar-row"><span>假设与模型脱节</span><span class="bar"><i style="width:20%"></i></span><b>~20%</b></div>
+      </div>
+    </section>
+
+    <section id="install" style="margin-top:56px">
+      <h2>把它装进你的 Agent</h2>
+      <p class="sub">指南本体是一个技能包，装好后写论文、改摘要、查结构时会自动调用。也可以不装，直接当手册读。</p>
+      <pre class="install" id="cmd">git clone https://github.com/Timevelyer/mcm-o-guide.git
+mv mcm-o-guide ~/.config/opencode/skills/mcm-o-guide   # OpenCode
+mv mcm-o-guide ~/.claude/skills/mcm-o-guide            # 或 Claude Code</pre>
+      <div class="row">
+        <button class="copy" id="copyCmd" type="button">复制命令</button>
+        <span class="hint">Windows 用 <code>Move-Item</code>；技能入口是 SKILL.md，英文版为 SKILL.en.md。</span>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MIT License · 数据来自 502 篇 MCM/ICM 获奖论文（2004–2024）</span>
+    <a class="star" href="https://github.com/Timevelyer/mcm-o-guide">★ Star on GitHub</a>
+    <nav>
+      <a href="https://github.com/Timevelyer/mcm-o-guide#readme">README</a>
+      <a href="https://github.com/Timevelyer/mcm-o-guide/blob/main/SKILL.md">SKILL.md</a>
+      <a href="https://github.com/Timevelyer/mcm-o-guide/releases">Releases</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var SAMPLE = "As extreme weather intensifies and urbanisation continues, urban drainage systems face growing pressure from both heavier rainfall and expanding impervious surfaces. To explore this phenomenon, we develop the REEF (Resilience Evaluation of Engineered Flow) model to quantify how drainage networks degrade and recover under compound stressors. Before modeling, we classified 12 years of hourly rainfall records into three regimes, matched them against land-use data from 48 monitoring stations, and estimated pipe roughness and infiltration rates from 216 field measurements. Parameters are set from municipal engineering standards, with ranges tested in the sensitivity section. For Task 1, we established a coupled hydrological-network model, incorporating pipe capacity, surface runoff and backwater effects. The results show that peak discharge rises by 34.2% under a 50-year storm relative to the 10-year baseline, and that 23.6% of nodes exceed capacity for more than 40 minutes. For Task 2, we calculated the resilience index, recovery time and failure probability to evaluate system robustness. Results indicate that recovery time increases from 6.4 h to 19.8 h as impervious area grows by 17%, while the resilience index falls from 0.81 to 0.57. For Task 3, we compared three retrofit scenarios, namely centralized storage, distributed storage and green infrastructure, and found that distributed storage reduces overflow volume by 41.5% at 62% of the centralized cost, with a payback period of 9.2 years. For Task 4, we varied rainfall intensity from 20 mm/h to 140 mm/h and found that the marginal benefit of additional storage flattens beyond 80 mm/h, where each extra 10% capacity yields only a 1.8% reduction in overflow. For Task 5, we mapped flooding exposure onto 5 districts and found that 2 of them account for 68% of at-risk residents, suggesting that targeted retrofits outperform uniform upgrades by a factor of 2.3. Finally, sensitivity analysis on infiltration rate, pipe roughness and rainfall temporal resolution confirms that the model is stable: outputs change by less than 7.3% across the tested ranges. We also discuss strengths, weaknesses and a phased retrofit priority list for city planners. Keywords: REEF, resilience index, urban drainage, scenario analysis";
+
+  var el = {
+    ta: document.getElementById("summary"),
+    run: document.getElementById("run"),
+    sample: document.getElementById("sample"),
+    clear: document.getElementById("clear"),
+    count: document.getElementById("count"),
+    empty: document.getElementById("empty"),
+    result: document.getElementById("result"),
+    checks: document.getElementById("checks"),
+    advice: document.getElementById("advice"),
+    scoreVal: document.getElementById("scoreVal"),
+    ring: document.getElementById("ring"),
+    verdict: document.getElementById("verdict"),
+    verdictSub: document.getElementById("verdictSub"),
+    copyCmd: document.getElementById("copyCmd"),
+    cmd: document.getElementById("cmd")
+  };
+
+  var CIRC = 2 * Math.PI * 42;
+
+  function words(t){
+    var latin = (t.match(/[A-Za-z0-9][A-Za-z0-9'’.\-%]*/g) || []).length;
+    var cjk = (t.match(/[\u4e00-\u9fa5]/g) || []).length;
+    return latin + cjk;
+  }
+  function sentences(t){
+    return (t.replace(/\s+/g," ").match(/[^.!?]+[.!?]+/g) || []).filter(function(s){
+      return s.trim().length > 2;
+    });
+  }
+  function numbers(t){
+    var m = t.match(/(?<![\w.])\d+(?:[.,]\d+)*(?:\s?[%％])?/g) || [];
+    return m;
+  }
+  function uniqTasks(t){
+    var set = [];
+    var re = /task\s*([1-9])/gi, m;
+    while ((m = re.exec(t))) { if (set.indexOf(m[1]) < 0) set.push(m[1]); }
+    set.sort();
+    return set;
+  }
+  function keywords(t){
+    var m = t.match(/key\s*words?\s*[:：]\s*([^\n]+)/i);
+    if (!m) return null;
+    return m[1].split(/[,;，；]/).map(function(s){ return s.trim(); }).filter(Boolean);
+  }
+
+  function pct(x){ return Math.max(0, Math.min(1, x)); }
+
+  function analyze(raw){
+    var t = raw.trim();
+    var w = words(t), sn = sentences(t), nums = numbers(t);
+    var snWithNum = sn.filter(function(s){ return /\d/.test(s); }).length;
+    var tasks = uniqTasks(t);
+    var kw = keywords(t);
+    var sens = /sensitiv|robust|perturb|stability|stress\s*test/i.test(t);
+    var limits = /limitation|weakness|future work|drawback|shortcoming/i.test(t);
+
+    var sNum = pct(nums.length / 20) * 30;
+    var sLen = (w >= 330 && w <= 540) ? 15 : (w >= 280 && w <= 620) ? 10 : (w >= 220 && w <= 700) ? 5 : 0;
+    var sTask = tasks.length >= 4 ? 20 : tasks.length === 3 ? 15 : tasks.length === 2 ? 10 : tasks.length === 1 ? 5 : 0;
+    var sSent = pct(snWithNum / 6) * 15;
+    var sKw = kw ? (kw.length >= 4 && kw.length <= 5 ? 8 : 5) : 0;
+    var sSens = sens ? 7 : 0;
+    var sLim = limits ? 5 : 0;
+
+    var score = Math.round(sNum + sLen + sTask + sSent + sKw + sSens + sLim);
+    score = Math.max(0, Math.min(100, score));
+
+    var rows = [
+      { key: "数字密度", val: nums.length + " 个", ref: "目标 20–35", state: nums.length >= 20 ? "ok" : nums.length >= 10 ? "warn" : "bad" },
+      { key: "Task 覆盖", val: tasks.length ? ("Task " + tasks.join(" / ")) : "未检出", ref: "每个子问题都要有", state: tasks.length >= 4 ? "ok" : tasks.length >= 2 ? "warn" : "bad" },
+      { key: "含数字的句子", val: snWithNum + " / " + sn.length + " 句", ref: "≥ 6 句", state: snWithNum >= 6 ? "ok" : snWithNum >= 4 ? "warn" : "bad" },
+      { key: "长度", val: w + " 词", ref: "350–520", state: (w >= 330 && w <= 540) ? "ok" : (w >= 280 && w <= 620) ? "warn" : "bad" },
+      { key: "关键词", val: kw ? (kw.length + " 个") : "缺失", ref: "4–5 个，含模型名", state: kw && kw.length >= 4 && kw.length <= 5 ? "ok" : kw ? "warn" : "bad" },
+      { key: "灵敏度", val: sens ? "已提及" : "未提及", ref: "至少一句结论", state: sens ? "ok" : "bad" },
+      { key: "局限/结论", val: limits ? "已提及" : "未提及", ref: "优势/局限/结论", state: limits ? "ok" : "warn" }
+    ];
+
+    var tips = [];
+    if (nums.length < 20) tips.push("数字只有 " + nums.length + " 个，O 奖中位数是 20–35 —— 给每个 Task 至少补一个量化结论（百分比、绝对值、对比基准）。");
+    if (tasks.length < 4) tips.push("只检出 " + tasks.length + " 个 Task。确认摘要覆盖了全部子问题，漏一个是复筛的直接淘汰项。");
+    if (snWithNum < 6) tips.push("含数字的句子只有 " + snWithNum + " 句。把「results are shown in Figure X」换成具体数值。");
+    if (w > 620) tips.push("长度 " + w + " 词，偏长。多数超长摘要来自背景铺陈，压缩到 2 句以内。");
+    if (w > 0 && w < 330) tips.push("长度 " + w + " 词，偏短。方法链和结果都容易被判为交代不清。");
+    if (!kw) tips.push("没有 Keywords 行。补 4–5 个关键词，第一个放你的模型名。");
+    else if (kw.length < 4) tips.push("关键词只有 " + kw.length + " 个，补到 4–5 个。");
+    if (!sens) tips.push("没提到灵敏度/稳健性。加一句「sensitivity analysis on X confirms …」，这是评委明确点名的加分项。");
+    if (!limits) tips.push("没提局限。最后一句写完结论后补一个 limitation + 改进方向。");
+
+    return { score: score, rows: rows, tips: tips, words: w, tasks: tasks, nums: nums.length };
+  }
+
+  function render(){
+    var t = el.ta.value;
+    el.count.textContent = words(t) + " 词";
+    if (!t.trim()) {
+      el.result.hidden = true;
+      el.empty.hidden = false;
+      return;
+    }
+    var r = analyze(t);
+    el.empty.hidden = true;
+    el.result.hidden = false;
+
+    el.scoreVal.textContent = r.score;
+    el.ring.setAttribute("stroke-dasharray", CIRC.toFixed(1));
+    el.ring.setAttribute("stroke-dashoffset", (CIRC * (1 - r.score / 100)).toFixed(1));
+    el.ring.setAttribute("stroke", r.score >= 80 ? "#14663f" : r.score >= 55 ? "#8a5a00" : "#a3241b");
+
+    el.verdict.textContent = r.score >= 85 ? "可以直接交" : r.score >= 70 ? "差一口气" : r.score >= 50 ? "需要补强" : "初筛有风险";
+    el.verdictSub.textContent = "按 7 项统计口径加权，满分 100。这只是摘要体检，不评模型好坏。";
+
+    el.checks.innerHTML = r.rows.map(function(row){
+      return '<li><span class="tag ' + row.state + '">' + (row.state === "ok" ? "OK" : row.state === "warn" ? "补" : "缺") + "</span>" +
+             "<span>" + row.key + ' <span class="m">' + row.ref + "</span></span>" +
+             '<span class="m">' + row.val + "</span></li>";
+    }).join("");
+
+    if (r.tips.length) {
+      el.advice.hidden = false;
+      el.advice.innerHTML = r.tips.map(function(s){ return "<p>· " + s + "</p>"; }).join("");
+    } else {
+      el.advice.hidden = false;
+      el.advice.innerHTML = "<p>· 七项都过关了。下一步检查正文数字和摘要是否完全一致 —— 这是终评最常见的扣分点。</p>";
+    }
+  }
+
+  el.run.addEventListener("click", render);
+  el.ta.addEventListener("input", render);
+  el.ta.addEventListener("keydown", function(e){
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") { e.preventDefault(); render(); }
+  });
+  el.sample.addEventListener("click", function(){ el.ta.value = SAMPLE; render(); el.ta.focus(); });
+  el.clear.addEventListener("click", function(){ el.ta.value = ""; render(); el.ta.focus(); });
+
+  el.copyCmd.addEventListener("click", function(){
+    var text = el.cmd.textContent;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){
+        el.copyCmd.textContent = "已复制";
+        setTimeout(function(){ el.copyCmd.textContent = "复制命令"; }, 1600);
+      }, function(){ el.copyCmd.textContent = "复制失败"; });
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

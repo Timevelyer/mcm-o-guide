@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 在线摘要自检器
+    url: https://timevelyer.github.io/mcm-o-guide/
+    about: 不安装任何东西，直接粘贴摘要看体检报告
+  - name: 使用指南（中文）
+    url: https://github.com/Timevelyer/mcm-o-guide/blob/main/使用指南.md
+    about: 先看"什么时候用"速查表，多数问题在这
