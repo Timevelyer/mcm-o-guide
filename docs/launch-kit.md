@@ -125,17 +125,27 @@
 - 只能用**网页表单**提交（`issues/new?template=recommend-resource.yml`），官方明确禁止 PR 与 `gh` CLI，必须真人提交
 - 计划：11 月 10 日之后
 
-**davepoon/buildwithclaude**（3.7k star，站点 buildwithclaude.com）—— 现在可投
+**davepoon/buildwithclaude**（3.7k star，站点 buildwithclaude.com）—— 已投，PR [#591](https://github.com/davepoon/buildwithclaude/pull/591)（2026-10-28）
 
 - 10-26 还在合并外部 PR，是这批列表里响应最快的
-- 收录方式是**把技能整份拷进** `plugins/all-skills/skills/mcm-o-guide/`（已有 198 个），同时在该插件的 `plugin.json` 里加关键词
-- 好处：会进 Claude Code 的 `/plugin` 市场，装包的人多；坏处：star 不会直接流向本仓库，主要拿外链与安装量
-- 只拷 `SKILL.md` + `scripts/` + `references/`，不带 `docs/` 站点，控制体积
+- 收录方式是**把技能整份拷进** `plugins/all-skills/skills/mcm-o-guide/`，同时在该插件的 `plugin.json` 里加关键词、把描述里的技能数 +1
+- 本次拷了 `SKILL.md` + `SKILL.en.md` + `GUIDE.en.md` + `references/` + `scripts/` + `templates/` + `playbooks/`，共 37 个文件 339 KB，**不带 `docs/` 站点**
+- 注意：这个仓库每天合并好几个 PR，提交后 base 会过期导致 `mergeable_state=dirty`，需要 `git fetch upstream && git rebase upstream/main` 再 force push（`plugin.json` 的 keywords 尾部和技能数会冲突，两边都要保留）
 
-**shishirui/awesome-claude-skills-zh**（24 star，中文列表）—— 可投但价值低
+**keyuyuan/skillhub-awesome-skills**（73 star，由 skillhub.club 维护）—— 已投，Issue [#19](https://github.com/keyuyuan/skillhub-awesome-skills/issues/19)（2026-10-28）
 
-- 2026-05-20 后未更新，7 月起的 PR 大多没合并；只花 5 分钟就投一条
-- 条目格式特殊，要带「什么时候用」「作者」「标签」三段
+- 仓库描述就是「Curated by Skillhub.club」，等于**替 skillhub.club 收稿**，不需要登录该站
+- 提交方式是开 Issue，格式照 `Skill / Name / Category / License / Canonical source`，再写「它加了什么 / 使用场景 / 资源细节」
+- 目前 3 个待处理投稿都还开着，收录节奏未知，属于低成本撒网
+
+**shishirui/awesome-claude-skills-zh**（24 star，中文列表）—— 跳过
+
+- 2026-05-20 后没再更新，7 月起的 PR 没有一个被合并（#11 #16 #18 至今 open，#12 #15 直接关闭），投了也是石沉大海
+
+**kael-odin/awesome-academic-research-skills**（184 star，中文科研 Skill 日榜）—— 暂时投不了
+
+- 主题最对口（学术写作/科研 Skill 排行榜），但收录硬门槛是 **100 star**，靠 Issue 或 PR 加进 `config/ranking.json` 的种子列表也一样要过线
+- 到 100 star 后优先投这里，自动日榜会持续给它导流
 
 **iskandaryv/awesome-claude-skills**：0 star，跳过。
 
