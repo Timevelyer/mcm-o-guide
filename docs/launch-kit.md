@@ -100,49 +100,52 @@
 
 ## 4. awesome list PR
 
-### 4.1 目标仓库与条目格式
+### 4.1 两个目标，规则完全不同（2026-10 实测）
 
-**ComposioHQ/awesome-claude-skills**（约 77k star）
-定位到 Education / Research 类，按字母序插入：
+**ComposioHQ/awesome-claude-skills**（78.1k star）—— 现在就能提
+
+- 允许**外链**条目（README 里已有 64 条指向别人仓库），不需要把技能复制进他们的仓库
+- 位置：`### Communication & Writing`，按字母序插在 `family-history-research` 之后、`Meeting Insights Analyzer` 之前
+- 格式（照抄现有条目风格，末尾署名）：
 
 ```markdown
-- [mcm-o-guide](https://github.com/Timevelyer/mcm-o-guide) - MCM/ICM paper-writing skill distilled from 502 award-winning papers: summary templates, page budgets, sensitivity patterns, plus a browser-based summary checker.
+- [mcm-o-guide](https://github.com/Timevelyer/mcm-o-guide) - Writing and QA guide for MCM/ICM modeling contests, distilled from 502 award-winning papers; includes a browser-based summary checker. *By [@Timevelyer](https://github.com/Timevelyer)*
 ```
 
-**hesreallyhim/awesome-claude-code**（约 55k star）
-放在 Skills → 领域类，同样一行式条目：
+- PR 只改 `README.md` 一行，不新增文件
+
+**hesreallyhim/awesome-claude-code**（56.7k star）—— 现在提不了
+
+- 硬门槛：资源要么**满 14 天**且有持续提交，要么 **≥100 star**。本仓库 2026-10-27 才发布，两条都不满足，现在提会被机器人自动关闭
+- 只能用**网页表单**提交（`issues/new?template=recommend-resource.yml`），官方原文：「It is **not** possible to submit a resource recommendation using the `gh` CLI」，而且**不要开 PR**
+- 一次只能推荐一个资源，且必须由真人提交
+- 计划：满 14 天（11 月上旬）或 star 过百后再投
+
+**iskandaryv/awesome-claude-skills**：0 star，跳过，不值得花时间。
+
+### 4.2 PR 正文模板（ComposioHQ 用，英文，直接贴）
 
 ```markdown
-- [mcm-o-guide](https://github.com/Timevelyer/mcm-o-guide) — Writing/QA guide for MCM/ICM (mathematical contest in modeling): corpus-backed templates, consistency checklists, and a summary self-checker.
-```
-
-**iskandaryv/awesome-claude-skills**（API 校验过 star 的新列表）
-
-```markdown
-- [mcm-o-guide](https://github.com/Timevelyer/mcm-o-guide) — Paper-writing and QA skill for MCM/ICM, built on a 502-paper corpus; includes an online summary checker. _(MIT)_
-```
-
-### 4.2 PR 正文模板（英文，直接贴）
-
-```markdown
-Adds mcm-o-guide, a writing/QA skill for the MCM/ICM modeling contest.
+Adds mcm-o-guide to Communication & Writing.
 
 - Built from 502 award-winning papers (2004–2024) plus 3 official judges' commentaries.
 - Covers summary structure, 25-page budgeting, model-selection matrix, sensitivity patterns, whole-paper consistency.
-- Ships an online summary checker (static, client-side) and 4 Node scripts.
-- MIT licensed, actively maintained; English and Chinese editions of the docs.
+- Ships a browser-based summary checker (static, client-side, nothing uploaded) and 4 Node scripts.
+- MIT licensed, English and Chinese editions of the docs.
 
-Happy to adjust the category or entry format.
+Happy to adjust the category or wording.
 ```
 
-### 4.3 提交前的自检（很重要）
+### 4.3 提交前的自检
 
-- [ ] License 已识别为 MIT（已满足）
-- [ ] 有英文 README（已满足）
-- [ ] 仓库描述一句话能看懂（已满足）
-- [ ] 有截图或在线 demo（已满足）
-- [ ] 最近 30 天有提交（赛前保持更新）
-- [ ] PR 只改 README，不动别的文件
+- [x] License 已被 GitHub 识别为 MIT
+- [x] 有英文 README 与英文工具站
+- [x] 有在线 demo（自检器）和截图（`docs/assets/og.png`）
+- [ ] 仓库满 14 天 或 100 star —— 只对 awesome-claude-code 有要求
+- [ ] PR 只改 `README.md`，不动别的文件
+- [ ] 条目放在目标仓库的正确分类、正确字母位置
+- [ ] 描述写「它是什么」，不写「你为什么该用它」（awesome-claude-code 明确反对 pitch 语气）
+- [ ] 不在别人的 Issue / PR 里贴自己的链接
 
 ### 4.4 目录站
 
