@@ -125,6 +125,18 @@
 - 只能用**网页表单**提交（`issues/new?template=recommend-resource.yml`），官方明确禁止 PR 与 `gh` CLI，必须真人提交
 - 计划：11 月 10 日之后
 
+**davepoon/buildwithclaude**（3.7k star，站点 buildwithclaude.com）—— 现在可投
+
+- 10-26 还在合并外部 PR，是这批列表里响应最快的
+- 收录方式是**把技能整份拷进** `plugins/all-skills/skills/mcm-o-guide/`（已有 198 个），同时在该插件的 `plugin.json` 里加关键词
+- 好处：会进 Claude Code 的 `/plugin` 市场，装包的人多；坏处：star 不会直接流向本仓库，主要拿外链与安装量
+- 只拷 `SKILL.md` + `scripts/` + `references/`，不带 `docs/` 站点，控制体积
+
+**shishirui/awesome-claude-skills-zh**（24 star，中文列表）—— 可投但价值低
+
+- 2026-05-20 后未更新，7 月起的 PR 大多没合并；只花 5 分钟就投一条
+- 条目格式特殊，要带「什么时候用」「作者」「标签」三段
+
 **iskandaryv/awesome-claude-skills**：0 star，跳过。
 
 ### 4.2 PR 正文模板（ComposioHQ 用，英文，直接贴）
@@ -154,11 +166,27 @@ Happy to adjust the category or wording.
 
 ### 4.4 目录站
 
-| 站点 | 提交方式 |
-|---|---|
-| SkillsMP | https://skillsmp.com → Submit a skill（需 GitHub 登录） |
-| awesomeclaude.ai | 站点底部 Submit 表单 |
-| wind8ai/skills-top-stars | 直接开 Issue 自荐（中文列表，回复率高） |
+| 站点 | 提交方式 | 助手能否代做 |
+|---|---|---|
+| skills.sh（Vercel Labs，27k+ 技能，`npx skills find` 的索引） | 无提交入口；靠 `npx skills add` 的安装遥测 + GitHub 数据自动收录 | 已实测安装成功，剩下要真实安装量 |
+| skillhub.club（154.5k 技能） | Publish 需登录 + API key | 否 |
+| skillhub.cn | 需实名认证 / 刷脸 | 否 |
+| claudeskillsgithub.com | 提交入口未开放 | 否 |
+| SkillsMP | https://skillsmp.com → Submit a skill（需 GitHub 登录） | 否 |
+| awesomeclaude.ai | 站点底部 Submit 表单 | 否 |
+| wind8ai/skills-top-stars | 直接开 Issue 自荐（中文列表） | 可，但需先看是否仍活跃 |
+
+### 4.5 免登录安装通道：`npx skills`（2026-10-28 实测通过）
+
+这是目前唯一「不用任何人审核、装完即分发」的通道，官方文档把**仓库根目录的 `SKILL.md`** 列为第一优先级发现位置：
+
+```bash
+npx skills add Timevelyer/mcm-o-guide
+```
+
+实测输出 `Found 1 skill → mcm-o-guide`，说明根目录布局已被正确识别，无需额外加 `skills/<name>/` 目录或 `.claude-plugin/marketplace.json`。README 与工具站的安装段已改成这一行命令（手动 clone 作为备选）。
+
+要注意的是：**装得上 ≠ 搜得到**。`npx skills find` 查的是 skills.sh 的远端索引，索引按安装量排序，所以前几十个真实安装是进入搜索结果的前提。这一步只能靠真实用户，刷不出来。
 
 ---
 

@@ -158,12 +158,10 @@
     <section id="install" style="margin-top:56px">
       <h2>Install it into your agent</h2>
       <p class="sub">The guide ships as a skill pack. Once installed it is picked up when you draft, revise or audit a paper. You can also just read it as a handbook.</p>
-      <pre class="install" id="cmd">git clone https://github.com/Timevelyer/mcm-o-guide.git
-mv mcm-o-guide ~/.config/opencode/skills/mcm-o-guide   # OpenCode
-mv mcm-o-guide ~/.claude/skills/mcm-o-guide            # or Claude Code</pre>
+      <pre class="install" id="cmd">npx skills add Timevelyer/mcm-o-guide</pre>
       <div class="row">
-        <button class="copy" id="copyCmd" type="button">Copy commands</button>
-        <span class="hint">On Windows use <code>Move-Item</code>. Entry point is SKILL.md; the English edition is SKILL.en.md.</span>
+        <button class="copy" id="copyCmd" type="button">Copy command</button>
+        <span class="hint">Detects OpenCode, Claude Code, Codex, Cursor and 75+ more agents (Node 22.20+). Manual route: <code>git clone</code>, then drop the folder into <code>~/.claude/skills/</code>.</span>
       </div>
     </section>
 

@@ -159,12 +159,10 @@
     <section id="install" style="margin-top:56px">
       <h2>把它装进你的 Agent</h2>
       <p class="sub">指南本体是一个技能包，装好后写论文、改摘要、查结构时会自动调用。也可以不装，直接当手册读。</p>
-      <pre class="install" id="cmd">git clone https://github.com/Timevelyer/mcm-o-guide.git
-mv mcm-o-guide ~/.config/opencode/skills/mcm-o-guide   # OpenCode
-mv mcm-o-guide ~/.claude/skills/mcm-o-guide            # 或 Claude Code</pre>
+      <pre class="install" id="cmd">npx skills add Timevelyer/mcm-o-guide</pre>
       <div class="row">
         <button class="copy" id="copyCmd" type="button">复制命令</button>
-        <span class="hint">Windows 用 <code>Move-Item</code>；技能入口是 SKILL.md，英文版为 SKILL.en.md。</span>
+        <span class="hint">一条命令自动识别 OpenCode / Claude Code / Codex / Cursor 等 80+ agent（Node 22.20+）。手动安装：<code>git clone</code> 后把目录放进 <code>~/.claude/skills/</code>。</span>
       </div>
     </section>
 

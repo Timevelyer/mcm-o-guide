@@ -35,6 +35,12 @@
 **1. 当技能装进 Agent（推荐）** —— 写论文、改摘要、查结构时自动调用
 
 ```bash
+npx skills add Timevelyer/mcm-o-guide
+```
+
+一条命令自动识别本机的 OpenCode / Claude Code / Codex / Cursor 等 80 多种 agent 并装好（需要 Node 22.20+）。不想用 CLI 就手动来：
+
+```bash
 git clone https://github.com/Timevelyer/mcm-o-guide.git
 mv mcm-o-guide ~/.config/opencode/skills/mcm-o-guide   # OpenCode
 mv mcm-o-guide ~/.claude/skills/mcm-o-guide            # Claude Code

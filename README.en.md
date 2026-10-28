@@ -35,6 +35,12 @@
 **1. Install as an agent skill (recommended)** — invoked automatically when you draft, revise or check a paper
 
 ```bash
+npx skills add Timevelyer/mcm-o-guide
+```
+
+This detects and installs into whichever agents you have (OpenCode, Claude Code, Codex, Cursor and 75+ more) in one command. Node 22.20+. Prefer manual?
+
+```bash
 git clone https://github.com/Timevelyer/mcm-o-guide.git
 mv mcm-o-guide ~/.config/opencode/skills/mcm-o-guide   # OpenCode
 mv mcm-o-guide ~/.claude/skills/mcm-o-guide            # Claude Code
