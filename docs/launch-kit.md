@@ -143,14 +143,17 @@
 - 只能用**网页表单**提交（`issues/new?template=recommend-resource.yml`），官方明确禁止 PR 与 `gh` CLI，必须真人提交
 - 计划：11 月 10 日之后
 
-**davepoon/buildwithclaude**（3.7k star，站点 buildwithclaude.com）—— 已投，PR [#591](https://github.com/davepoon/buildwithclaude/pull/591)（2026-10-28）
+**davepoon/buildwithclaude**（3.7k star，站点 buildwithclaude.com）—— **已合并**，PR [#591](https://github.com/davepoon/buildwithclaude/pull/591)（2026-10-28 提交，10-29 合并）
 
 - 10-26 还在合并外部 PR，是这批列表里响应最快的
 - 收录方式是**把技能整份拷进** `plugins/all-skills/skills/mcm-o-guide/`，同时在该插件的 `plugin.json` 里加关键词、把描述里的技能数 +1
 - 本次拷了 `SKILL.md` + `SKILL.en.md` + `GUIDE.en.md` + `references/` + `scripts/` + `templates/` + `playbooks/`，共 37 个文件 339 KB，**不带 `docs/` 站点**
 - 注意：这个仓库每天合并好几个 PR，提交后 base 会过期导致 `mergeable_state=dirty`，需要 `git fetch upstream && git rebase upstream/main` 再 force push（`plugin.json` 的 keywords 尾部和技能数会冲突，两边都要保留）
 - **2026-10-28 当日观察**：维护者 07:20 连合 #568（mbse-requirements）与 #563（hey-research，同为 research 类），#583 是「按意见改完重开为 #595」而非拒绝。说明**格式合规的 PR 基本会合**，被关的多半是要改稿
-- #591 现状：`open` / `unstable`（CI 等首次贡献者批准，非失败）/ 0 条评论 / 与上游无冲突。等维护者审，不需要再操作
+- **结果：2026-10-29 10:21 合并**（merge commit `1d5732c`），维护者留言「Thanks. The guide is a research skill, and the bundle count includes it.」，`plugin.json` 技能数 205、keywords 含 `mcm-o-guide`
+- 合并后核对过：21 篇 references、4 个 playbook、4 个脚本、3 个模板全部到位，`SKILL.md` 里的相对链接没有一条断链，LICENSE 被改名成 `LICENSE.txt` 且署名保留
+- 这个列表**只抄不链**：它的 README 不列单个技能，曝光来自装 `all-skills` 插件的人；想从它导流回仓库，得靠 SKILL.md 里的链接和关键词
+- 经验：格式合规 + 分类正确（research）+ 不动别人的文件，1 天就合；下次同类 PR 直接照这个模板走
 
 **keyuyuan/skillhub-awesome-skills**（73 star，由 skillhub.club 维护）—— 已投，Issue [#19](https://github.com/keyuyuan/skillhub-awesome-skills/issues/19)（2026-10-28）
 

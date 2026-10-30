@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); version
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-10-30
+
+### Changed
+- 安装方式改为一行的 `npx skills add Timevelyer/mcm-o-guide`（自动识别 Claude Code / OpenCode / Codex / Cursor 等 80+ agent），手动 clone 降为备选；README 中英两版与工具站中英两站同步
+- `docs/launch-kit.md` 更新渠道实况：davepoon/buildwithclaude 收录、skillhub.club 上传限制、小红书发布素材
+
+### Notes
+- 本仓库的技能已收录进 [`davepoon/buildwithclaude`](https://github.com/davepoon/buildwithclaude) 的 `all-skills` 集合
+
 ## [1.1.1] - 2026-10-28
 
 ### Added
