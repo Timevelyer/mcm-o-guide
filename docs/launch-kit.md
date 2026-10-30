@@ -141,7 +141,28 @@
 
 - 硬门槛：资源满 **14 天**且有后续提交，**或 ≥100 star**；否则机器人自动关
 - 只能用**网页表单**提交（`issues/new?template=recommend-resource.yml`），官方明确禁止 PR 与 `gh` CLI，必须真人提交
-- 计划：11 月 10 日之后
+- **时间算准**：首个 commit 是 2026-10-27 14:21 UTC，满 14 天要到 **11-10 22:21（北京时间）之后**，保险起见 11-11 上午再交
+- 表情、推销语气、第二人称都会被拒；描述只能写「它是什么」，一行、10–500 字符
+- 表单最后有一个**反向陷阱勾选框**（"Do not check the following box"），勾了就说明没读题，必须留空
+
+### 11-11 表单逐字段复制（提交前照这张表填）
+
+| 字段 | 填什么 |
+|---|---|
+| Display Name | `mcm-o-guide` |
+| Category | `Research & Scientific Inquiry`（备选：`Skills`） |
+| Link | `https://github.com/Timevelyer/mcm-o-guide` |
+| Author Name | `Timevelyer` |
+| Author Link | `https://github.com/Timevelyer` |
+| Description | 见下方英文段 |
+
+Description（一段，别换行，无表情）：
+
+```
+A writing and QA skill for MCM/ICM mathematical modeling contests, built from 502 award-winning papers (2004-2024) and three official judges' commentaries. It provides a summary template with sentence-level breakdowns, a model-selection matrix for problem types A-F, a 25-page budget, sensitivity analysis patterns, and consistency checklists, plus four Node scripts and a browser-based summary checker. Chinese and English editions, MIT licensed.
+```
+
+届时表单里 5 个必勾项全勾，最后那个陷阱框**不要勾**。
 
 **davepoon/buildwithclaude**（3.7k star，站点 buildwithclaude.com）—— **已合并**，PR [#591](https://github.com/davepoon/buildwithclaude/pull/591)（2026-10-28 提交，10-29 合并）
 
